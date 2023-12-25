@@ -20,6 +20,8 @@ class Solution:
         n = 0
         max_val_found = -1
 
+        # go through each char from the end
+        # letters that are before bigger ones are with minus
         for c in s[::-1]:
             if values[c] >= max_val_found:
                 n += values[c]
