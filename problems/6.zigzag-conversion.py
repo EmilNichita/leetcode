@@ -11,19 +11,24 @@ class Solution:
             return s
         n = len(s)
         
+        # list of rows that will be populated
         result = [list() for _ in range(numRows)]
 
         i = 0
         while i < n:
-            # going vertically down    
+            # going vertically down, adding to each row  
             for k in range(numRows):
                 if i<n:
                     result[k].append(s[i])
                     i+=1
+            
+            # going up, adding to each row
             for k in range(numRows-2, 0, -1):
                 if i<n:
                     result[k].append(s[i])
                     i+=1
+        
+        # concatenate each row, then all rows
         return "".join(["".join(x) for x in result])
 
 
