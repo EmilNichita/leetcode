@@ -11,17 +11,19 @@ class Solution:
         if len(prices) < 2:
             return 0
 
-        lowest = prices[0]
-        highest_after = prices[0]
+        buy, sell = 0, 1
+        max_profit = 0
 
-        for p in prices:
-            if p < lowest:
-                lowest = p
-                highest_after = p
-            if highest_after < p:
-                highest_after = p
-        
-        return max(0, highest_after-lowest)
+        while sell < len(prices):
+            curr_profit = prices[sell] - prices[buy]
+
+            if prices[buy] < prices[sell]:
+                max_profit = max(curr_profit, max_profit)
+            else:
+                buy = sell
+            sell += 1
+
+        return max_profit
 
 # @lc code=end
 
